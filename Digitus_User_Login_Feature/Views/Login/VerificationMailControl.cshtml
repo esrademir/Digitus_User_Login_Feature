@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Areas/AdminPanel/Assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Areas/AdminPanel/Assets/css/login.css" rel="stylesheet" />
+    <title>Verification Control</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-6 mx-auto p-0">
+            @if (ViewBag.message != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @ViewBag.message
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+            }
+            <div class="card">
+                <div class="login-box">
+                    <div class="login-snip">
+                        <div class="login-space">
+                            @using (Html.BeginForm("VerificationMailControl", "Login", FormMethod.Post))
+                            {
+                                <div>
+                                    <br />
+                                    <br />
+                                    <div class="group"> <label for="verification" class="label">Verification Code</label> <input name="verifiyCode" type="text" class="input" placeholder="Enter your username"> </div>
+                                    <div class="group"> <input type="submit" class="button" value="Send"> </div>
+                                    @*<div class="group"><a href="@Url.Action("VerificationMailControl", "Login", new { id=Model})" class="button"></a></div>*@
+                                    <div class="hr"></div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Areas/AdminPanel/Assets/jquery-3.6.0.min.js"></script>
+    <script src="~/Areas/AdminPanel/Assets/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
